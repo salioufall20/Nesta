@@ -20,18 +20,13 @@ export class RolesGuard implements CanActivate {
       ],
     );
 
-    // Aucune restriction de rôle
     if (!roles || roles.length === 0) {
       return true;
     }
 
     const request = context.switchToHttp().getRequest();
     const user = request.user;
-console.log("\n===== RBAC =====");
-console.log("roles:", roles);
-console.log("user:", user);
 
-    // Utilisateur non authentifié
     if (!user) {
       return false;
     }
